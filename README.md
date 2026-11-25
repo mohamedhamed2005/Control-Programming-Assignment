@@ -17,6 +17,33 @@ uv run python -m control_assignment      # or: uv run control-assignment
 uv run pytest                 # run the test-suite
 ```
 
+### Running from the `src/` folder (without uv run)
+
+You can also run the program directly with Python by changing into the `src/` directory.
+The package lives in `src/`, so Python can only find it from there (or if `src` is on `PYTHONPATH`).
+
+```bash
+# 1. Install the dependencies once (from the project root)
+uv sync                       # or: pip install numpy PySide6
+
+# 2. Change into src/ and run the package
+cd src
+python -m control_assignment
+```
+
+If you used `uv sync`, activate the virtual environment first so `python` can see the installed packages:
+
+```bash
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+# Windows (cmd)
+.venv\Scripts\activate.bat
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
 Optional Windows/macOS/Linux executable:
 
 ```bash
