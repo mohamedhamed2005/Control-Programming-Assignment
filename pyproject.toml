@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "control-assignment"
+version = "0.1.0"
+description = "Interactive tools for signal flow graphs and Routh stability analysis"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0",
+    "PySide6>=6.8",
+]
+
+[project.scripts]
+control-assignment = "control_assignment.gui.app:main"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1",
+    "pytest>=8.0",
+    "ruff>=0.9",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/control_assignment"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
